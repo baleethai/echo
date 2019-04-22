@@ -4,19 +4,9 @@ require 'vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
-if (isset($_GET['channel']) && !empty($_GET['channel'])) {
-    $message = '';
-    $channel = $_GET['channel'];
-    switch ($channel) {
-        case 'hooks':
-            $message = 'Success ' . $channel;
-            break;
-        default:
-            $message = 'Success ' . $channel;
-            break;
-    }
-
+if (isset($_GET['m']) && !empty($_GET['m'])) {
+    $m = $_GET['m'];
     $line = new KS\Line\LineNotify(getenv('TOKEN'));
-    $line->send($message);
+    $line->send($m);
 }
 
